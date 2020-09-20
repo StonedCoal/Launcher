@@ -44,6 +44,8 @@ import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+
 import static com.skcraft.launcher.util.SharedLocale.tr;
 
 /**
@@ -418,9 +420,9 @@ public final class Launcher {
             @Override
             public void run() {
                 try {
+                	FlatDarkLaf.install();
                     Launcher launcher = createFromArguments(args);
-                    SwingHelper.setSwingProperties(tr("launcher.appTitle", launcher.getVersion()));
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                    SwingHelper.setSwingProperties(tr("launcher.appTitle", launcher.getVersion()));                
                     launcher.showLauncherWindow();
                 } catch (Throwable t) {
                     log.log(Level.WARNING, "Load failure", t);
